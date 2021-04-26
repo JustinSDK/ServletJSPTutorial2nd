@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset='UTF-8'>
+<title>Gossip 微網誌</title>
+<link rel='stylesheet' href='../css/member.css' type='text/css'>
+</head>
+<body>
+    <div class='leftPanel'>
+        <img src='../images/caterpillar.jpg' alt='Gossip 微網誌' />
+    </div>
+    
+    <div th:switch="${!userExisted}">
+        <div th:case="${true}">
+            <p><span th:text="${username}">username</span> 不存在</p>
+        </div>     
+        <div th:case="*">
+            <div th:switch="${#lists.isEmpty(messages)}">
+                <div th:case="${true}">
+                    <span th:text="${username}">username</span> 尚未發表訊息
+                </div>
+                <div th:case="*">
+                    <span th:text="${username}">username</span> 的微網誌
+		            <table border='0' cellpadding='2' cellspacing='2'>
+		            <thead> 
+		            <tr><th><hr></th></tr>
+		            </thead>  
+		            <tbody>     
+		                <tr th:each="message : ${messages}">
+		                    <td style='vertical-align: top;'>
+		                        <span th:text="${message.username}">user name</span><br> 
+		                        <span th:utext="${message.blabla}">blabla</span><br>
+		                        <span th:text="${message.localDateTime}">time here</span>                                        
+		                        <hr>
+		                    </td>            
+		                </tr>  
+		                
+		            </tbody>
+		            </table>
+	            </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

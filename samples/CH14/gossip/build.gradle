@@ -1,0 +1,36 @@
+plugins {
+	id 'org.springframework.boot' version '2.4.4'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+	id 'war'
+}
+
+group = 'cc.openhome'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '15'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'com.googlecode.owasp-java-html-sanitizer:owasp-java-html-sanitizer:20200713.1'  
+    implementation 'javax.validation:validation-api:2.0.1.Final'
+    implementation 'org.hibernate:hibernate-validator:6.2.0.Final'	
+	
+	runtimeOnly 'com.h2database:h2'
+    runtimeOnly 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5:3.0.4.RELEASE'
+    
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+	useJUnitPlatform()
+}

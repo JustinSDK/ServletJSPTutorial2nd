@@ -1,0 +1,58 @@
+import org.gradle.plugins.ide.eclipse.model.Facet
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'eclipse-wtp'
+
+// 設定原始碼版本
+sourceCompatibility = 1.15
+// 設定 WebApp 根目錄    
+webAppDirName = 'WebContent'
+// 設定 Java 原始碼目錄 
+sourceSets.main.java.srcDir 'src'
+// 編譯時的原始碼編碼 
+compileJava.options.encoding = 'UTF-8'
+
+repositories {
+    jcenter()
+}
+
+// 設置 Project Facets
+eclipse {
+    wtp {
+        facet {
+            facet name: 'jst.web', type: Facet.FacetType.fixed
+            facet name: 'wst.jsdt.web', type: Facet.FacetType.fixed
+            facet name: 'jst.java', type: Facet.FacetType.fixed
+            facet name: 'jst.web', version: '4.0'
+            facet name: 'jst.java', version: '1.8'
+            facet name: 'wst.jsdt.web', version: '1.0'
+        }
+    }
+}
+
+dependencies {
+    providedCompile 'javax.servlet:javax.servlet-api:4.0.0'
+    providedCompile 'javax.servlet.jsp:jsp-api:2.3'
+    
+    compile 'javax.servlet:jstl:1.2'
+    compile 'com.sun.mail:javax.mail:1.6.2'
+    compile 'com.googlecode.owasp-java-html-sanitizer:owasp-java-html-sanitizer:20200713.1'  
+    
+    compile 'org.springframework:spring-context:5.3.5' 
+    compile 'org.springframework:spring-webmvc:5.3.5'       
+    compile 'org.springframework:spring-aspects:5.3.5'    
+
+    compile 'javax.validation:validation-api:2.0.1.Final'
+    compile 'org.hibernate:hibernate-validator:6.2.0.Final'
+    
+    compile 'org.thymeleaf:thymeleaf-spring5:3.0.12.RELEASE'
+
+    compile 'org.springframework:spring-jdbc:5.3.5'
+    compile 'com.h2database:h2:1.4.200'    
+    compile 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5:3.0.4.RELEASE'
+
+    compile 'org.springframework.security:spring-security-core:5.3.5.RELEASE' 
+    compile 'org.springframework.security:spring-security-config:5.3.5.RELEASE'
+    compile 'org.springframework.security:spring-security-web:5.3.5.RELEASE'
+}

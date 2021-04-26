@@ -1,0 +1,22 @@
+plugins {
+    id 'java-library'
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/com.h2database/h2
+    implementation group: 'com.h2database', name: 'h2', version: '1.4.200'
+    
+    // https://mvnrepository.com/artifact/org.springframework/spring-context
+    implementation group: 'org.springframework', 
+                   name: 'spring-context', version: '5.3.5'
+
+    // https://mvnrepository.com/artifact/org.springframework/spring-jdbc
+    implementation group: 'org.springframework', 
+                   name: 'spring-jdbc', version: '5.3.5'
+
+    testImplementation 'junit:junit:4.12'
+}
